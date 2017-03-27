@@ -1,0 +1,537 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin center($position: absolute, $top: 50%, $left: 50%, $transform: translate(-50%, -50%)) {
+  position: $position;
+  top: $top;
+  left: $left;
+  transform: $transform;
+}
+
+$hidden: none;
+
+$grey: rgba(31,31,31,.1);
+
+$silverish: rgba(238, 238, 238, 1);
+
+$fullgrey: rgba(31,31,31,1);
+
+$seafoam: rgba(0,255,188,1);
+
+$shadow: 1px 1px 5px rgba(0,0,0,.5);
+$shadowsticky: 1px 1px 2px rgba(31,31,31,1);
+
+$bleu: rgba(26, 119, 255, 1);
+
+$lb: rgba(183, 206, 236, 1);
+
+$yeller: rgba(255, 248, 0, 1);
+
+$purp: rgba(118, 62, 140, 1);
+
+$bootstraplb: rgba(91, 192, 222, 1);
+$bootstrapdb: rgba(66, 139, 202, 1);
+
+$white: rgba(255, 255, 255, 1);
+
+%transparentblack {
+  background-color: rgba(0, 0, 0, .6);
+  }
+
+%center {
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: center;
+  }
+
+%reset {
+  margin: 0;
+  padding: 0;
+  }
+
+%greybox {
+  background:      rgba(31, 31, 31, .5); /*rgba(255, 255, 255, 0.5);*/
+  border-bottom:   1px solid rgba(0, 0, 0, 0.25);
+  border-top:      1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:      0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+%greenhoverbb {
+  &:after {
+    display:       block;
+    content:       '';
+    border-bottom: solid 3px $purp;
+    transform:     scaleX(0);
+    transition:    transform 500ms ease-in-out;
+    }
+  &:hover:after {
+    transform: scaleX(1);
+    }
+  }
+
+
+%whiteshadow {
+  text-shadow: $shadow;
+  color: rgba(255,255,255,1);
+  }
+
+%vwcenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+%draw {
+  transition: color 0.25s;
+
+  &::before,
+  &::after {
+    border: 2px solid transparent;
+    width: 0;
+    height: 0;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+  }
+
+  &::after {
+    bottom: 0;
+    right: 0;
+  }
+
+  &:hover {
+    /*color: $grey;*/
+  }
+
+  &:hover::before,
+  &:hover::after {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover::before {
+    border-top-color: $fullgrey;
+    border-right-color: $fullgrey;
+    transition:
+            width 0.25s ease-out,
+                      height 0.25s ease-out 0.25s;
+  }
+
+  &:hover::after {
+    border-bottom-color: $fullgrey;
+    border-left-color: $fullgrey;
+    transition:
+                         border-color 0s ease-out 0.5s,
+                         width 0.25s ease-out 0.5s,
+                         height 0.25s ease-out 0.75s;
+  }
+}
+
+%meet {
+  &:hover {
+    color: $lb;
+  }
+  &::after {
+    top: 0;
+    left: 0;
+  }
+  &:hover::before {
+    border-top-color: $lb;
+    border-right-color: $lb;
+  }
+
+  &:hover::after {
+    border-bottom-color: $lb;
+    border-left-color: $lb;
+    transition: height 0.25s ease-out, width 0.25s ease-out 0.25s;
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 100%;
+}
+
+
+@media all and (max-width: 2200px) {
+  #enter {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+  }
+  .welcome {
+    text-align: center;
+  }
+}
+
+@media all and (max-width: 1020px) {
+  #enter {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+  }
+  .welcome {
+      text-align: center;
+      font-size: 60px!important;
+  }
+  #navi {
+    display: block;
+  }
+  #nav {
+    display: none;
+    line-height: 40px!important;
+    margin: -5px -15px 0 0;
+    ul {
+      li {
+        display:    block;
+        padding:    0 35px;
+        background: rgba(255, 255, 255, 0.9) !important;
+        a {
+          color: rgba(89, 89, 89, 1) !important;
+          text-shadow: none;
+        }
+      }
+    }
+  }
+  .col-md-2 {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.header {
+  position: fixed;
+  height: 90px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 9999;
+  border-bottom: 1px solid $silverish;
+  line-height: 90px;
+  white-space: nowrap;
+  transition: all 0.3s cubic-bezier(0, 0, .58, 1);
+  h2 {
+    font-family: 'Yellowtail', sans-serif;
+    font-size:   40px;
+    @extend %whiteshadow;
+    transition:  all 0.3s cubic-bezier(0, 0, .58, 1);
+    display:     inline-block;
+    a {
+      color:           inherit;
+      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+        color:           inherit;
+      }
+    }
+  }
+  .fa {
+    padding-top:    20px;
+    padding-bottom: 20px;
+    transition:     all 0.3s cubic-bezier(0, 0, .58, 1);
+    cursor:         pointer;
+    display:        none;
+  }
+  .nav {
+    @extend %center;
+    .active {
+      color: $seafoam;
+    }
+    li {
+      padding: 0 10px;
+      display: inline-block;
+      a {
+        padding:         0;
+        color:           rgba(255, 255, 255, 1);
+        text-shadow:     $shadow;
+        text-decoration: none;
+        transition:      color .5s;
+        &:hover, &:active {
+          background-color: rgba(255, 255, 255, 0);
+          /*color: $seafoam;*/
+        }
+      }
+    }
+  }
+}
+
+.sticky {
+  height: 70px!important;
+  line-height: 70px!important;
+  background: rgba(255,255,255,0.9)!important;
+  .active {
+    color: $seafoam!important;
+  }
+  h2 {
+    color: rgba(0, 0, 0, 1)!important;
+    margin: 10px 0 0 0;
+    text-shadow: none!important;
+  }
+  .fa {
+    padding-top: 8px;
+    color: rgba(0,0,0,1);
+    cursor: pointer;
+  }
+  li {
+    a {
+      color: rgba(89, 89, 89, 1)!important;
+      text-shadow: none!important;
+      &:hover {
+        color: $seafoam!important;
+      }
+    }
+  }
+}
+
+.intro {
+  position: relative;
+  height: 100%;
+  .introwrap{
+    width: 100%;
+    overflow: hidden;
+    .particles-js-canvas-el {
+      position: relative;
+      height: 100%;
+      display: block;
+    }
+    &::before {
+      content: ' ';
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: url(http://bhuck.com/images/purpspace.jpg) no-repeat center center;
+      background-size: cover;
+      will-change: transform;
+      z-index: -1;
+    }
+    .welcome {
+      @extend %vwcenter;
+      color: $white;
+      font-family: 'Roboto', sans-serif;
+      font-size: 100px;
+      font-weight: 100;
+    }
+  }
+  .enter {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    a {
+      text-decoration: none;
+      font-size: 30px;
+      font-weight: 100;
+      color: $white;
+      border: 1px solid $white;
+      padding: 10px 50px;
+      transition: all 1s ease;
+      &:hover {
+        box-shadow: inset 0 100px 0 $fullgrey;
+      }
+    }
+  }
+}
+
+.linkslam a {
+  text-shadow: 0 0 1px rgba(111, 134, 134, 0.3);
+  &::before {
+    color:              $seafoam;
+    content:            attr(data-hover);
+    position:           absolute;
+    opacity:            0;
+    text-shadow:        0 0 1px rgba(255, 255, 255, 0.3);
+    -webkit-transform:  scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+    -moz-transform:     scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+    transform:          scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    -moz-transition:    -moz-transform 0.3s, opacity 0.3s;
+    transition:         transform 0.3s, opacity 0.3s;
+    pointer-events:     none;
+  }
+  &:hover::before,
+  &:focus::before {
+    -webkit-transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+    -moz-transform:    scale(1) translateX(0px) translateY(0px) rotate(0deg);
+    transform:         scale(1) translateX(0px) translateY(0px) rotate(0deg);
+    opacity:           1;
+  }
+}
+
+.main {
+  overflow: hidden;
+  padding: 100px 0;
+  background: $white;
+  .contentheader {
+    background: url(http://bhuck.com/svg/dev/jetbrains/pybeam1.png) no-repeat center;
+    background-size: contain;
+    padding-bottom: 150px;
+    margin-bottom: 50px;
+    h2 {
+      font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      font-size: 40px;
+    }
+    h1 {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 50px;
+    }
+  }
+  .btn {
+    transition: all .3s ease;
+    &:hover {
+      background: rgba(31,31,31,.7);
+      color: $white;
+      border: 1px solid #ccc;
+    }
+    &:visited {
+     color: $white;
+  }
+  }
+  .container-fluid {
+    background-color: $fullgrey;
+    .contentgrey {
+      padding: 50px 0;
+      color: $white;
+      overflow: hidden;
+      .picwrap {
+        padding: 100px 0;
+        text-align: center;
+        font-size: 30px;
+      }
+      .textwrap {
+        padding: 100px 0;
+        text-align: right;
+        border-left: 1px solid $white;
+        h2 {
+          font-size: 50px;
+        }
+        p {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+  .contentwhite {
+    padding: 50px 0;
+    color: $fullgrey;
+    overflow: hidden;
+    .picwrap {
+      padding: 100px 0;
+      text-align: center;
+      font-size: 30px;
+    }
+    .textwrap {
+      padding: 100px 0;
+      text-align: left;
+      border-right: 1px solid $fullgrey;
+      h2 {
+        font-size: 50px;
+      }
+      p {
+        padding-right: 10px;
+        font-size: 24px;
+      }
+    }
+  }
+
+  #bg1 {
+    background: url(http://bhuck.com/svg/dev/jetbrains/beam-1.png) no-repeat center;
+    background-size: contain;
+    overflow: hidden;
+  }
+
+  #bg2 {
+    background: url(http://bhuck.com/svg/dev/jetbrains/dottreacebeam1.png) no-repeat center;
+    background-size: contain;
+    overflow: hidden;
+  }
+
+  #bg3 {
+    background: url(http://bhuck.com/svg/dev/jetbrains/clionbeam1.png) no-repeat right;
+    background-size: contain;
+    overflow: hidden;
+  }
+
+  .utilities {
+    padding: 100px 0;
+    h2 {
+      font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 40px;
+      font-weight: 300;
+      text-align: center;
+      border-bottom: 1px solid $fullgrey;
+      padding-bottom: 30px;
+    }
+    .imgflex {
+      padding-top: 100px;
+      .img-zoom {
+        width: 200px;
+        height: 200px;
+        -webkit-transition: all .2s ease-in-out;
+        -moz-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        &:hover {
+          transform: scale(1.25);
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  height: 300px;
+  background: url(http://bhuck.com/images/patterns/bg-footer-noise.jpg);
+  .foot {
+    transform: translateY(90%);
+    .nav {
+      margin-top: 30px;
+      @extend %center;
+      .active {
+        color: $seafoam;
+      }
+      li {
+        display: inline-block;
+        &:not(:first-child):before {
+          content: "|";
+          color:   rgba(255, 255, 255, 1);
+        }
+        a {
+          display:         inline;
+          padding:         0 10px;
+          color:           rgba(255, 255, 255, 1);
+          text-shadow:     $shadow;
+          text-decoration: none;
+          transition:      color .5s;
+          &:hover, &:active {
+            background-color: rgba(255, 255, 255, 0);
+            color:            $purp;
+          }
+        }
+      }
+    }
+    .footericons {
+      color: rgba(255, 255, 255, 1);
+      transform: translateY(100%);
+      @extend %center;
+      a {
+        margin-left: 20px;
+        color: rgba(255, 255, 255, 1);
+        transition: color .5s;
+        &:hover {
+          color: $seafoam;
+        }
+      }
+    }
+  }
+}

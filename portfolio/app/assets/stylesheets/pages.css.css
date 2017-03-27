@@ -1,0 +1,443 @@
+.header .nav, .footer .foot .nav, .footer .foot .footericons {
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: center;
+}
+
+.header h2 {
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.intro .introwrap .welcome {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 100%;
+}
+
+@media all and (max-width: 2200px) {
+  #enter {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+  }
+  .welcome {
+    text-align: center;
+  }
+}
+
+@media all and (max-width: 1020px) {
+  #enter {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+  }
+  .welcome {
+    text-align: center;
+    font-size: 60px !important;
+  }
+  #navi {
+    display: block;
+  }
+  #nav {
+    display: none;
+    line-height: 40px !important;
+    margin: -5px -15px 0 0;
+  }
+  #nav ul li {
+    display: block;
+    padding: 0 35px;
+    background: rgba(255, 255, 255, 0.9) !important;
+  }
+  #nav ul li a {
+    color: #595959 !important;
+    text-shadow: none;
+  }
+  .col-md-2 {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.header {
+  position: fixed;
+  height: 90px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 9999;
+  border-bottom: 1px solid #eeeeee;
+  line-height: 90px;
+  white-space: nowrap;
+  transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+}
+
+.header h2 {
+  font-family: 'Yellowtail', sans-serif;
+  font-size: 40px;
+  transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+  display: inline-block;
+}
+
+.header h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header h2 a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header .fa {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+  cursor: pointer;
+  display: none;
+}
+
+.header .nav .active {
+  color: #00ffbc;
+}
+
+.header .nav li {
+  padding: 0 10px;
+  display: inline-block;
+}
+
+.header .nav li a {
+  padding: 0;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  transition: color .5s;
+}
+
+.header .nav li a:hover, .header .nav li a:active {
+  background-color: rgba(255, 255, 255, 0);
+  /*color: $seafoam;*/
+}
+
+.sticky {
+  height: 70px !important;
+  line-height: 70px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.sticky .active {
+  color: #00ffbc !important;
+}
+
+.sticky h2 {
+  color: black !important;
+  margin: 10px 0 0 0;
+  text-shadow: none !important;
+}
+
+.sticky .fa {
+  padding-top: 8px;
+  color: black;
+  cursor: pointer;
+}
+
+.sticky li a {
+  color: #595959 !important;
+  text-shadow: none !important;
+}
+
+.sticky li a:hover {
+  color: #00ffbc !important;
+}
+
+.intro {
+  position: relative;
+  height: 100%;
+}
+
+.intro .introwrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.intro .introwrap .particles-js-canvas-el {
+  position: relative;
+  height: 100%;
+  display: block;
+}
+
+.intro .introwrap::before {
+  content: ' ';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url(http://bhuck.com/images/purpspace.jpg) no-repeat center center;
+  background-size: cover;
+  will-change: transform;
+  z-index: -1;
+}
+
+.intro .introwrap .welcome {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 100px;
+  font-weight: 100;
+}
+
+.intro .enter {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+}
+
+.intro .enter a {
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 100;
+  color: white;
+  border: 1px solid white;
+  padding: 10px 50px;
+  transition: all 1s ease;
+}
+
+.intro .enter a:hover {
+  box-shadow: inset 0 100px 0 #1f1f1f;
+}
+
+.linkslam a {
+  text-shadow: 0 0 1px rgba(111, 134, 134, 0.3);
+}
+
+.linkslam a::before {
+  color: #00ffbc;
+  content: attr(data-hover);
+  position: absolute;
+  opacity: 0;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+  -webkit-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+  -moz-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+  transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+  -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  pointer-events: none;
+}
+
+.linkslam a:hover::before, .linkslam a:focus::before {
+  -webkit-transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+  -moz-transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+  transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+  opacity: 1;
+}
+
+.main {
+  overflow: hidden;
+  padding: 100px 0;
+  background: white;
+}
+
+.main .contentheader {
+  background: url(http://bhuck.com/svg/dev/jetbrains/pybeam1.png) no-repeat center;
+  background-size: contain;
+  padding-bottom: 150px;
+  margin-bottom: 50px;
+}
+
+.main .contentheader h2 {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+}
+
+.main .contentheader h1 {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 50px;
+}
+
+.main .btn {
+  transition: all .3s ease;
+}
+
+.main .btn:hover {
+  background: rgba(31, 31, 31, 0.7);
+  color: white;
+  border: 1px solid #ccc;
+}
+
+.main .btn:visited {
+  color: white;
+}
+
+.main .container-fluid {
+  background-color: #1f1f1f;
+}
+
+.main .container-fluid .contentgrey {
+  padding: 50px 0;
+  color: white;
+  overflow: hidden;
+}
+
+.main .container-fluid .contentgrey .picwrap {
+  padding: 100px 0;
+  text-align: center;
+  font-size: 30px;
+}
+
+.main .container-fluid .contentgrey .textwrap {
+  padding: 100px 0;
+  text-align: right;
+  border-left: 1px solid white;
+}
+
+.main .container-fluid .contentgrey .textwrap h2 {
+  font-size: 50px;
+}
+
+.main .container-fluid .contentgrey .textwrap p {
+  font-size: 24px;
+}
+
+.main .contentwhite {
+  padding: 50px 0;
+  color: #1f1f1f;
+  overflow: hidden;
+}
+
+.main .contentwhite .picwrap {
+  padding: 100px 0;
+  text-align: center;
+  font-size: 30px;
+}
+
+.main .contentwhite .textwrap {
+  padding: 100px 0;
+  text-align: left;
+  border-right: 1px solid #1f1f1f;
+}
+
+.main .contentwhite .textwrap h2 {
+  font-size: 50px;
+}
+
+.main .contentwhite .textwrap p {
+  padding-right: 10px;
+  font-size: 24px;
+}
+
+.main #bg1 {
+  background: url(http://bhuck.com/svg/dev/jetbrains/beam-1.png) no-repeat center;
+  background-size: contain;
+  overflow: hidden;
+}
+
+.main #bg2 {
+  background: url(http://bhuck.com/svg/dev/jetbrains/dottreacebeam1.png) no-repeat center;
+  background-size: contain;
+  overflow: hidden;
+}
+
+.main #bg3 {
+  background: url(http://bhuck.com/svg/dev/jetbrains/clionbeam1.png) no-repeat right;
+  background-size: contain;
+  overflow: hidden;
+}
+
+.main .utilities {
+  padding: 100px 0;
+}
+
+.main .utilities h2 {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+  border-bottom: 1px solid #1f1f1f;
+  padding-bottom: 30px;
+}
+
+.main .utilities .imgflex {
+  padding-top: 100px;
+}
+
+.main .utilities .imgflex .img-zoom {
+  width: 200px;
+  height: 200px;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+}
+
+.main .utilities .imgflex .img-zoom:hover {
+  transform: scale(1.25);
+}
+
+.footer {
+  height: 300px;
+  background: url(http://bhuck.com/images/patterns/bg-footer-noise.jpg);
+}
+
+.footer .foot {
+  transform: translateY(90%);
+}
+
+.footer .foot .nav {
+  margin-top: 30px;
+}
+
+.footer .foot .nav .active {
+  color: #00ffbc;
+}
+
+.footer .foot .nav li {
+  display: inline-block;
+}
+
+.footer .foot .nav li:not(:first-child):before {
+  content: "|";
+  color: white;
+}
+
+.footer .foot .nav li a {
+  display: inline;
+  padding: 0 10px;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  transition: color .5s;
+}
+
+.footer .foot .nav li a:hover, .footer .foot .nav li a:active {
+  background-color: rgba(255, 255, 255, 0);
+  color: #763e8c;
+}
+
+.footer .foot .footericons {
+  color: white;
+  transform: translateY(100%);
+}
+
+.footer .foot .footericons a {
+  margin-left: 20px;
+  color: white;
+  transition: color .5s;
+}
+
+.footer .foot .footericons a:hover {
+  color: #00ffbc;
+}
